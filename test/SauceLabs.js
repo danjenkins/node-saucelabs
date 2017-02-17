@@ -59,39 +59,9 @@ describe('SauceLabs', function () {
     });
 
     describe('#getUserActivity', function () {
-      describe('without start and end dates', function () {
-        it('GETs `/rest/v1/:username/activity`', function (done) {
-          var mock = nockle.get('/rest/v1/:username/activity');
-          sauce.getUserActivity(verifySuccess(mock, done));
-        });
-      });
-
-      describe('with start date', function () {
-        var start = new Date('Jan 1, 1970 00:00:00');
-
-        it('GETs `/rest/v1/:username/activity?start=1970-01-01`', function (done) {
-          var mock = nockle.get('/rest/v1/:username/activity?start=1970-01-01');
-          sauce.getUserActivity(start, verifySuccess(mock, done));
-        });
-      });
-
-      describe('with end date', function () {
-        var end = new Date('Jan 1, 1971 00:00:00');
-
-        it('GETs `/rest/v1/:username/activity?end=1971-01-01`', function (done) {
-          var mock = nockle.get('/rest/v1/:username/activity?end=1971-01-01');
-          sauce.getUserActivity(null, end, verifySuccess(mock, done));
-        });
-      });
-
-      describe('with start and end dates', function () {
-        var start = new Date('Jan 1, 1970 00:00:00');
-        var end   = new Date('Jan 1, 1971 00:00:00');
-
-        it('GETs `/rest/v1/:username/activity?start=1970-01-01&end=1971-01-01`', function (done) {
-          var mock = nockle.get('/rest/v1/:username/activity?start=1970-01-01&end=1971-01-01');
-          sauce.getUserActivity(start, end, verifySuccess(mock, done));
-        });
+      it('GETs `/rest/v1/:username/activity`', function (done) {
+        var mock = nockle.get('/rest/v1/:username/activity');
+        sauce.getUserActivity(verifySuccess(mock, done));
       });
     });
 
@@ -103,9 +73,39 @@ describe('SauceLabs', function () {
     });
 
     describe('#getAccountUsage', function () {
-      it('GETs `/rest/v1/users/:username/usage`', function (done) {
-        var mock = nockle.get('/rest/v1/users/:username/usage');
-        sauce.getAccountUsage(verifySuccess(mock, done));
+      describe('without start and end dates', function () {
+        it('GETs `/rest/v1/users/:username/usage`', function (done) {
+          var mock = nockle.get('/rest/v1/users/:username/usage');
+          sauce.getAccountUsage(verifySuccess(mock, done));
+        });
+      });
+
+      describe('with start date', function () {
+        var start = new Date('Jan 1, 1970 00:00:00');
+
+        it('GETs `/rest/v1/users/:username/usage?start=1970-01-01`', function (done) {
+          var mock = nockle.get('/rest/v1/users/:username/usage?start=1970-01-01');
+          sauce.getAccountUsage(start, verifySuccess(mock, done));
+        });
+      });
+
+      describe('with end date', function () {
+        var end = new Date('Jan 1, 1971 00:00:00');
+
+        it('GETs `/rest/v1/users/:username/usage?end=1971-01-01`', function (done) {
+          var mock = nockle.get('/rest/v1/users/:username/usage?end=1971-01-01');
+          sauce.getAccountUsage(null, end, verifySuccess(mock, done));
+        });
+      });
+
+      describe('with start and end dates', function () {
+        var start = new Date('Jan 1, 1970 00:00:00');
+        var end = new Date('Jan 1, 1971 00:00:00');
+
+        it('GETs `/rest/v1/users/:username/usage?start=1970-01-01&end=1971-01-01`', function (done) {
+          var mock = nockle.get('/rest/v1/users/:username/usage?start=1970-01-01&end=1971-01-01');
+          sauce.getAccountUsage(start, end, verifySuccess(mock, done));
+        });
       });
     });
 
